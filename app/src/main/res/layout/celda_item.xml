@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/celdaItemImageViewImagen"
+        android:layout_width="wrap_content"
+        android:layout_height="260dp"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#AD808080"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/celdaItemTextViewNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="NombreItem"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/celdaItemTextViewPrecio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="PrecioItem"
+            android:textColor="#4CAF50"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+
+
+</FrameLayout>
