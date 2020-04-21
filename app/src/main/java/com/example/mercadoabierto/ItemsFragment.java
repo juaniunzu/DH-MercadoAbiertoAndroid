@@ -1,5 +1,6 @@
 package com.example.mercadoabierto;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,14 +15,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ItemsFragment extends Fragment {
+public class ItemsFragment extends Fragment implements ItemsAdapter.ItemListener {
 
     private RecyclerView recyclerView;
+    private ItemsAdapter adapter;
+
 
 
     public ItemsFragment() {
         // Required empty public constructor
     }
+
+
 
 
 
@@ -39,14 +44,15 @@ public class ItemsFragment extends Fragment {
         List<Item> listaItems = crearListaItems();
 
         //creo adapter
-        ItemsAdapter itemsAdapter = new ItemsAdapter(listaItems);
+        adapter = new ItemsAdapter(listaItems, this);
+
 
         //creo el layout manager
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
 
         //seteo el manager y el adapter al recyclerview
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(itemsAdapter);
+        recyclerView.setAdapter(adapter);
 
         return view;
     }
@@ -76,5 +82,15 @@ public class ItemsFragment extends Fragment {
 
     }
 
+    public void agregarItem(String nombre, String precio){
 
+
+
+    }
+
+
+    @Override
+    public void hicieronClick(Item unItem) {
+
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.mercadoabierto;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +15,11 @@ import java.util.List;
 public class ItemsAdapter extends RecyclerView.Adapter {
 
     private List<Item> listaItems;
+    private ItemListener listener;
 
-    public ItemsAdapter(List<Item> listaItems) {
+    public ItemsAdapter(List<Item> listaItems, ItemListener listener) {
         this.listaItems = listaItems;
+        this.listener = listener;
     }
 
     //creo la celda del item
@@ -67,12 +70,23 @@ public class ItemsAdapter extends RecyclerView.Adapter {
         private TextView celdaItemTextViewNombre;
         private TextView celdaItemTextViewPrecio;
 
-        public ItemsViewHolder(@NonNull View itemView) {
+        public ItemsViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             celdaItemImageViewImagen = itemView.findViewById(R.id.celdaItemImageViewImagen);
             celdaItemTextViewNombre = itemView.findViewById(R.id.celdaItemTextViewNombre);
             celdaItemTextViewPrecio = itemView.findViewById(R.id.celdaItemTextViewPrecio);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    //item al q se le hace click
+                    Item itemClickeado = listaItems.get(getAdapterPosition());
+
+                    listener.hicieronClick(itemClickeado);
+                }
+            });
 
         }
 
@@ -85,6 +99,10 @@ public class ItemsAdapter extends RecyclerView.Adapter {
 
         }
 
+    }
+
+    public interface ItemListener{
+        void hicieronClick(Item unItem);
     }
 
 }
