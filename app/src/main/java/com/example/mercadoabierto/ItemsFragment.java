@@ -92,5 +92,18 @@ public class ItemsFragment extends Fragment implements ItemsAdapter.ItemListener
     @Override
     public void hicieronClick(Item unItem) {
 
+        //creo intent
+        Intent itemsFragmentADetail = new Intent(getContext(), DetailActivity.class);
+
+        //bundles
+        Bundle bundle = new Bundle();
+        bundle.putString(DetailActivity.NOMBRE_ITEM, unItem.getNombre());
+        bundle.putString(DetailActivity.PRECIO_ITEM, unItem.getPrecio());
+        bundle.putInt(DetailActivity.IMAGEN_ITEM, unItem.getImagen());
+
+        itemsFragmentADetail.putExtras(bundle);
+
+        startActivity(itemsFragmentADetail);
+
     }
 }
